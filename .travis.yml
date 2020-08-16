@@ -6,4 +6,4 @@ before_install:
     - docker build -t tejozarkar/docker-angular -f Dockerfile.dev . 
 
 script:
-    - docker run -e CI=true -p 80:3000 tejozarkar/docker-angular npm run test -- --coverage
+    - docker run -e CI=true -p 80:3000 tejozarkar/docker-angular npm run test
