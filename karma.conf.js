@@ -1,5 +1,6 @@
 module.exports = function (config) {
-  config.set({
+  
+   var conf =  {
     browsers: [ 'MyHeadlessChrome'],
     customLaunchers: {
       MyHeadlessChrome: {
@@ -30,5 +31,11 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     singleRun: true
-  });
+  }
+
+  if (process.env.TRAVIS) {
+    conf.browsers = ['Chrome_travis_ci'];
+  }
+
+  config.set(conf);
 };
