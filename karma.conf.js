@@ -1,32 +1,15 @@
-// Karma configuration file, see link for more information
-// https://karma-runner.github.io/1.0/config/configuration-file.html
-
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
-    basePath: '',
-    frameworks: ['jasmine', '@angular-devkit/build-angular'],
-    plugins: [
-      require('karma-jasmine'),
-      require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
-      require('karma-coverage-istanbul-reporter'),
-      require('@angular-devkit/build-angular/plugins/karma')
-    ],
-    client: {
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
-    },
-    coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, './coverage/angular-docker-test'),
-      reports: ['html', 'lcovonly', 'text-summary'],
-      fixWebpackSourcePaths: true
-    },
-    reporters: ['progress', 'kjhtml'],
-    port: 9876,
+    frameworks: ["mocha", "chai"],
+    browsers: ["ChromeHeadless"],
+    reporters: ["progress"],
+    basePath: process.cwd(),
     colors: true,
-    logLevel: config.LOG_INFO,
-    autoWatch: true,
-    browsers: ['Chrome'],
+    files: [
+      "test/**/*.js" // or you can put your test bundle here
+    ],
+    port: 9999,
     singleRun: true,
-    restartOnFileChange: true
+    concurrency: Infinity
   });
 };
