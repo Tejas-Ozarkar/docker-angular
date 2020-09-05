@@ -1,7 +1,17 @@
 module.exports = function(config) {
   config.set({
     frameworks: ["mocha", "chai"],
-    browsers: ["ChromeHeadless"],
+    browsers: ["MyHeadlessChrome"],
+    customLaunchers: {
+      MyHeadlessChrome: {
+        base: "Chrome",
+        flags: [
+          "--headless", 
+          "--disable-gpu", 
+          "--remote-debugging-port-9222"
+        ]
+      }
+    },
     reporters: ["progress"],
     basePath: process.cwd(),
     colors: true,
